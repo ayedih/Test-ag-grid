@@ -20,4 +20,67 @@ export class AppComponent  {
   private defaultColumnDef;
   private rowData : any[];
 
+  constructor(private http:HttpClient){
+
+     this.columnDefs = [
+      {
+        headerName: "Athlete",
+        field: "athlete",
+        width: 150,
+        resisable: true
+      },
+      {
+        headerName: "Age",
+        field: "age",
+        width: 90
+      },
+      {
+        headerName: "Country",
+        field: "country",
+        width: 120,
+        enableRowGroup: true
+      },
+      {
+        headerName: "Year",
+        field: "year",
+        width: 90
+      },
+      {
+        headerName: "Date",
+        field: "date",
+        width: 110,
+       /*  comparator: dateComparator */
+      },
+      {
+        headerName: "Medals",
+        children: [
+          {
+            headerName: "Total",
+            field: "total",
+            columnGroupShow: "closed",
+            width: 125
+          },
+          {
+            headerName: "Gold",
+            field: "gold",
+            columnGroupShow: "open",
+            width: 125
+          },
+          {
+            headerName: "Silver",
+            field: "silver",
+            columnGroupShow: "open",
+            width: 125
+          },
+          {
+            headerName: "Bronze",
+            field: "bronze",
+            columnGroupShow: "open",
+            width: 125
+          }
+        ]
+      }
+    ];
+  }
+
 }
