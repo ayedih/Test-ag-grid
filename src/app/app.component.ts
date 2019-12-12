@@ -17,7 +17,7 @@ export class AppComponent  {
   public modules = AllModules;
 
   private columnDefs;
-  private defaultColumnDef;
+  private defaultColDef;
   private rowData : any[];
 
   constructor(private http:HttpClient){
@@ -27,7 +27,6 @@ export class AppComponent  {
         headerName: "Athlete",
         field: "athlete",
         width: 150,
-        resisable: true
       },
       {
         headerName: "Age",
@@ -81,6 +80,11 @@ export class AppComponent  {
         ]
       }
     ];
+
+      this.defaultColDef = {
+      sortable: true,
+      resizable: true
+    };
   }
 
 }
