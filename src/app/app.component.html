@@ -1,4 +1,42 @@
-<hello name="{{ name }}"></hello>
-<p>
-  Start editing to see some magic happen :)
-</p>
+<div class="test-container">
+  <div class="test-header">
+    <div class="example-section">
+      Column Visible :
+        <button (click)="showAthlete(true)">Show Athlete</button>
+          <button (click)="showAthlete(false)">Hide Athlete</button>
+
+          <button (click)="showMedals(true)">Show All Medals</button>
+          <button (click)="showMedals(false)">Hide All Medals</button>
+    </div>
+
+    <div class="example-section">
+      Column Pinned :
+          <button (click)="pinAthlete(true)">Pin Athlete</button>
+          <button (click)="pinAthlete(false)">Unpin Athlete</button>
+
+          <button (click)="pinAge(true)">Pin Age</button>
+          <button (click)="pinAge(false)">Unpin Age</button>
+    </div>
+
+      <div class="example-section">
+      Column State:
+          <button (click)="printState()">Print State</button>
+          <button (click)="saveState()">Save State</button>
+          <button (click)="restoreState()">Restore State</button>
+          <button (click)="resetState()">Reset State</button>
+    </div>
+  </div>
+</div>
+
+<ag-grid-angular
+#agGrid
+style="width:100%, height:400px;"
+id=myGrid
+class="ag-theme-balham"
+[modules]="modules"
+[columnDefs]="columnDefs"
+[defaultColDef]="defaultColDef"
+[debug]="true"
+[rowData]="rowData"
+(gridReady)="OnGridReady($event)"
+></ag-grid-angular>
