@@ -5,16 +5,27 @@ import { AllCommunityModules } from "@ag-grid-community/all-modules";
 import "@ag-grid-community/all-modules/dist/styles/ag-grid.css";
 import "@ag-grid-community/all-modules/dist/styles/ag-theme-balham.css";
 
+
+
+
+import {CustomWindow} from './custom.window.ts';
+
+declare let window: CustomWindow;
+  
 @Component({
   selector: "my-app",
   templateUrl: "./app.component.html",
   styleUrls: ["./app.component.css"]
 })
 export class AppComponent {
+
+
+
+
   private gridApi;
   private gridColumnApi;
 
-  public modules: Module[] = AllCommunityModules;
+  public modules = AllCommunityModules;
 
   private columnDefs;
   private defaultColDef;
@@ -36,7 +47,7 @@ export class AppComponent {
         headerName: "Country",
         field: "country",
         width: 120,
-        enableRowGroup: true
+       /*  enableRowGroup: true */
       },
       {
         headerName: "Year",
@@ -87,17 +98,17 @@ export class AppComponent {
   } 
  
   printState() {
-    var colState = this.gridColumnApi.getColumnState(); //Gets the state of the columns. Typically used when saving column state.
-    var groupState = this.gridColumnApi.getColumnGroupState(); //Gets the state of the column groups. Typically used when saving column group state.
-    var sortState = this.gridApi.getSortModel();
-    var filterState = this.gridApi.getFilterModel();
-
+     var colState = this.gridColumnApi.getColumnState(); //Gets the state of the columns. Typically used when saving column state.
+     var groupState = this.gridColumnApi.getColumnGroupState(); //Gets the state of the column groups. Typically used when saving column group state.
+     var sortState = this.gridApi.getSortModel();
+     var filterState = this.gridApi.getFilterModel();
+/* 
     console.log("******************************");
     console.log("colState: ", colState);
     console.log("groupState: ", groupState);
     console.log("sortState: ", sortState);
     console.log("filterState: ", filterState);
-    console.log("******************************"); 
+    console.log("******************************");  */
   }
 
   saveState() {
@@ -106,12 +117,12 @@ export class AppComponent {
     window.sortState = this.gridColumnApi.getSortModel();
     window.filterState = this.gridColumnApi.getFilterModel();
 
-    console.log("column state saved");
-  }
+/*     console.log("column state saved");
+ */  }
 
   restoreState() {
     if (!window.colState) {
-      console.log("no columns state to restore by, you must save state first");
+      /* console.log("no columns state to restore by, you must save state first"); */
       return;
     }
 
@@ -120,8 +131,8 @@ export class AppComponent {
     this.gridApi.setSortModel(window.sortModel);
     this.gridApi.setFilterModel(window.filterState);
 
-    console.log("column state restored");
-  }
+/*     console.log("column state restored");
+ */  }
 
   resetState() {
     this.gridColumnApi.resetColumnState();
