@@ -1,6 +1,7 @@
 import { Component, ViewChild } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
-import { AllModules } from "@ag-grid-enterprise/all-modules";
+import { AllCommunityModules } from "@ag-grid-community/all-modules";
+
 import "@ag-grid-community/all-modules/dist/styles/ag-grid.css";
 import "@ag-grid-community/all-modules/dist/styles/ag-theme-balham.css";
 
@@ -13,11 +14,11 @@ export class AppComponent {
   private gridApi;
   private gridColumnApi;
 
-  public modules = AllModules;
+  public modules = AllCommunityModules;
 
   private columnDefs;
   private defaultColDef;
-  private rowData: any[];
+  private rowData: any;
 
   constructor(private http: HttpClient) {
     this.columnDefs = [
@@ -83,8 +84,9 @@ export class AppComponent {
       sortable: true,
       resizable: true
     };
-  }
-
+  }/*   public modules = AllModules;
+ */
+/* 
   printState() {
     var colState = this.gridColumnApi.getColumnState(); //Gets the state of the columns. Typically used when saving column state.
     var groupState = this.gridColumnApi.getColumnGroupState(); //Gets the state of the column groups. Typically used when saving column group state.
@@ -96,7 +98,7 @@ export class AppComponent {
     console.log("groupState: ", groupState);
     console.log("sortState: ", sortState);
     console.log("filterState: ", filterState);
-    console.log("******************************");
+    console.log("******************************"); 
   }
 
   saveState() {
@@ -131,7 +133,8 @@ export class AppComponent {
 
   showAthlete(show) {
     this.gridColumnApi.setColumnVisible("athlete", show);
-  }
+  }/*   public modules = AllModules;
+
 
   showMedals(show) {
     this.gridColumnApi.setColumnsVisible(
@@ -146,7 +149,7 @@ export class AppComponent {
 
   pinAge(pin) {
     this.gridColumnApi.setColumnPinned("age", pin);
-  }
+  } */
 
   onGridReady(params) {
     this.gridApi = params.api;
@@ -156,7 +159,8 @@ export class AppComponent {
       .get(
         "https://raw.githubusercontent.com/ag-grid/ag-grid/master/packages/ag-grid-docs/src/olympicWinnersSmall.json"
       )
-      .subscribe(date => {
+      .subscribe(data => {
+        console.log("data here: ", data[0])
         this.rowData = data;
       });
 

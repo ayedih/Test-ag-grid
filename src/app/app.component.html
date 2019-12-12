@@ -1,4 +1,4 @@
-<div class="test-container">
+<!-- <div class="test-container">
   <div class="test-header">
     <div class="example-section">
       Column Visible :
@@ -24,7 +24,7 @@
           <button (click)="resetState()">Reset State</button>&nbsp;
     </div>
   </div>
-</div>
+</div> -->
 
 <ag-grid-angular
 #agGrid
@@ -36,5 +36,4 @@ class="ag-theme-balham"
 [defaultColDef]="defaultColDef"
 [debug]="true"
 [rowData]="rowData"
-(gridReady)="OnGridReady($event)"
-></ag-grid-angular>
+(gridReady)="onGridReady($event)"></ag-grid-angular>
