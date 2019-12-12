@@ -1,4 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
+import {HttpClient} from "@angular/common/http";
+import {AllModules} from "@ag-grid-entreprise/all-modules";
+import "@ag-grid-community/all-modules/dist/styles/ag-grid.css";
+import "@ag-grid-community/all-modules/dist/styles/ag-theme-balham.css";
 
 @Component({
   selector: 'my-app',
