@@ -14,7 +14,7 @@ export class AppComponent {
   private gridApi;
   private gridColumnApi;
 
-  public modules = AllCommunityModules;
+  public modules: Module[] = AllCommunityModules;
 
   private columnDefs;
   private defaultColDef;
@@ -84,9 +84,8 @@ export class AppComponent {
       sortable: true,
       resizable: true
     };
-  }/*   public modules = AllModules;
- */
-/* 
+  } 
+ 
   printState() {
     var colState = this.gridColumnApi.getColumnState(); //Gets the state of the columns. Typically used when saving column state.
     var groupState = this.gridColumnApi.getColumnGroupState(); //Gets the state of the column groups. Typically used when saving column group state.
@@ -133,7 +132,8 @@ export class AppComponent {
 
   showAthlete(show) {
     this.gridColumnApi.setColumnVisible("athlete", show);
-  }/*   public modules = AllModules;
+  }
+  
 
 
   showMedals(show) {
@@ -149,7 +149,7 @@ export class AppComponent {
 
   pinAge(pin) {
     this.gridColumnApi.setColumnPinned("age", pin);
-  } */
+  }
 
   onGridReady(params) {
     this.gridApi = params.api;

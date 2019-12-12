@@ -1,7 +1,11 @@
-/* /* Add application styles & imports to this file! */
+.test-grid {
+    height: 1px;
+    min-height: 1px;
+    flex-grow: 1;
+}
 
 .test-container {
-    height: 1000px;
+    height: 100em;
     display: flex;
     flex-direction: column;
 }
@@ -12,6 +16,11 @@
     margin-bottom: 5px;
 }
 
-.test-header .example-section:not(:first-child) {
-    margin-top: 5px;
-} 
+.test-header label {
+    margin-right: 10px;
+}
+
+.test-header input {
+    position: relative;
+    top: 2px;
+}
