@@ -87,4 +87,81 @@ export class AppComponent  {
     };
   }
 
-}
+
+  printState() {
+
+        var colState = this.gridColumnApi.getColumnState();//Gets the state of the columns. Typically used when saving column state.
+        var groupState = this.gridColumnApi.getColumnGroupState();//Gets the state of the column groups. Typically used when saving column group state.
+        var sortState = this.gridApi.getSortModel();
+        var filterState = this.gridApi.getFilterModel();
+
+        console.log("******************************");
+        console.log("colState: ", colState);
+        console.log("groupState: ", groupState);
+        console.log("sortState: ", sortState);
+        console.log("filterState: ", filterState);
+        console.log("******************************");
+  }
+
+
+  saveState() {
+
+    window.colState = this.gridColumnApi.getColumnState();
+    window.grouState = this.gridColumnApi.getColumnGroupState();
+    window.sortState = this.gridColumnApi.getSortModel();
+    window.filterState = this.gridColumnApi.getFilterModel();
+    
+    console.log("column state saved");
+  }
+
+  restoreState() {
+
+    if (!window.colState) {
+      console.log("no columns state to restore by, you must save state first");
+      return;
+    }
+
+    this.gridColumnApi.setColumnState(window.colState);
+    this.gridColumnApi.setColumnGroupState(window.groupState);
+    this.gridApi.setSortModel(window.sortModel);
+    this.gridApi.setFilterModel(window.filterState);
+
+    console.log("column state restored");
+  }
+
+
+  resetState() {
+    this.gridColumnApi.resetColumnState();
+    this.gridColumnApi.resetColumnGroupstate();
+    this.gridApi.setSortModel(null);
+    this.gridApi.setFilterModel(null);
+
+  }
+
+  showAthlete(show) {
+    this.gridColumnApi.setColumnVisible("athlete", show);
+  }
+
+   showMedals(show) {
+    this.gridColumnApi.setColumnsVisible(["total", "gold", "silver", "bronze"], show);
+  }
+
+  pinAthlete(pin) {
+    this.gridColumnApi.setColumnPinned("athlete", pin);
+  }
+
+  pinAge(pin) {
+        this.gridColumnApi.setColumnPinned("age", pin);
+
+  }
+
+  onGridReady(params) {
+
+    this.gridApi = params.api;
+    this.gridColumnApi = params.columnApi;
+
+    this.http.get(  "https://raw.githubusercontent.com/ag-grid/ag-grid/master/packages/ag-grid-docs/src/olympicWinnersSmall.json").subscribe(date => {
+      this.rowData = data;
+    });
+  }
+ }
