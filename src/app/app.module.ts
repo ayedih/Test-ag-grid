@@ -16,7 +16,7 @@ import { AgGridModule } from "@ag-grid-community/angular";
 
 @NgModule({
   imports:      [ BrowserModule, FormsModule, HttpClientModule,  AgGridModule.withComponents([]) ],
-  declarations: [ AppComponent, HelloComponent ],
+  declarations: [ AppComponent ],
   bootstrap:    [ AppComponent ]
 })
 export class AppModule { }
